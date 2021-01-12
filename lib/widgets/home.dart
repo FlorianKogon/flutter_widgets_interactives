@@ -11,19 +11,45 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+  String changed;
+  String submitted;
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          children: [
-
-          ],
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).requestFocus(FocusNode());
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(widget.title),
         ),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TextField(
+                keyboardType: TextInputType.text,
+                onChanged: (String string) {
+                  setState(() {
+                    changed = string;
+                  });
+                },
+                onSubmitted: (String string) {
+                  setState(() {
+                    submitted = string;
+                  });
+                },
+                decoration: InputDecoration(
+                    labelText: "Entrez votre nom"
+                ),
+              ),
+              Text(changed ?? ''),
+              Text(submitted ?? '')
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
