@@ -14,6 +14,36 @@ class _MyHomePageState extends State<MyHomePage> {
   String changed;
   String submitted;
 
+  Map check = {
+    "Carottes" : false,
+    "Bananes" : false,
+    "Navets" : false,
+    "Poireaux" : false,
+    "Pommes" : false,
+  };
+
+  List<Widget> checkList() {
+    List<Widget> l = [];
+    check.forEach((key, value) {
+      Row row = Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(key),
+          Checkbox(
+            value: value,
+            onChanged: (bool b) {
+              setState(() {
+                check[key] = b;
+              });
+            },
+          ),
+        ],
+      );
+      l.add(row);
+    });
+    return l;
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -27,26 +57,27 @@ class _MyHomePageState extends State<MyHomePage> {
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextField(
-                keyboardType: TextInputType.text,
-                onChanged: (String string) {
-                  setState(() {
-                    changed = string;
-                  });
-                },
-                onSubmitted: (String string) {
-                  setState(() {
-                    submitted = string;
-                  });
-                },
-                decoration: InputDecoration(
-                    labelText: "Entrez votre nom"
-                ),
+            children: checkList(),
+            /*
+            TextField(
+              keyboardType: TextInputType.text,
+              onChanged: (String string) {
+                setState(() {
+                  changed = string;
+                });
+              },
+              onSubmitted: (String string) {
+                setState(() {
+                  submitted = string;
+                });
+              },
+              decoration: InputDecoration(
+                  labelText: "Entrez votre nom"
               ),
-              Text(changed ?? ''),
-              Text(submitted ?? '')
-            ],
+            ),
+            Text(changed ?? ''),
+            Text(submitted ?? ''),
+          ),*/
           ),
         ),
       ),
