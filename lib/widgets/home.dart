@@ -11,6 +11,9 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+  //Items needed for slider
+  double sliderDouble = 0.0;
+
   //Items needed for switch
   bool interruptor;
 
@@ -87,6 +90,24 @@ class _MyHomePageState extends State<MyHomePage> {
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            //SLIDER
+            /*
+            children: [
+              Text("Valeur du slider = $sliderDouble"),
+              Slider(
+                divisions: 10,
+                inactiveColor: Colors.grey,
+                activeColor: Colors.green,
+                value: sliderDouble,
+                min: 0.0,
+                max: 10.0,
+                onChanged: (double d) {
+                  setState(() {
+                    sliderDouble = d;
+                  });
+                })
+            ],
+             */
             // SWTICH
             /*
             children: [
