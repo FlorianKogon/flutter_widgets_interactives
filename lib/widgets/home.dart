@@ -11,6 +11,10 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+  //Items needed for datepicker
+  DateTime date;
+  TimeOfDay time;
+
   //Items needed for slider
   double sliderDouble = 0.0;
 
@@ -90,6 +94,14 @@ class _MyHomePageState extends State<MyHomePage> {
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              FlatButton(
+                onPressed: showDate,
+                child: Text(date == null ? 'Cliquez ici' : date.toString())),
+              FlatButton(
+                onPressed: showTime,
+                child: Text(time == null ? 'Cliquez ici' : time.toString()))
+            ],
             //SLIDER
             /*
             children: [
@@ -151,5 +163,30 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
     );
+  }
+
+  Future<Null> showDate() async {
+    DateTime choice = await showDatePicker(
+        context: context,
+        initialDatePickerMode: DatePickerMode.year,
+        initialDate: DateTime.now(),
+        firstDate: DateTime(1980),
+        lastDate: DateTime(2045));
+    if (choice != null) {
+      setState(() {
+        date = choice;
+      });
+    }
+  }
+
+  Future<Null> showTime() async {
+    TimeOfDay hour = await showTimePicker(
+        context: context,
+        initialTime: TimeOfDay.now());
+    if (hour != null) {
+      setState(() {
+        time = hour;
+      });
+    }
   }
 }
