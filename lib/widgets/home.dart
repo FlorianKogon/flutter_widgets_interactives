@@ -11,6 +11,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+  //Items needed for radiobuttons
   int itemSelected;
 
   List<Widget> radios() {
@@ -35,9 +36,11 @@ class _MyHomePageState extends State<MyHomePage> {
     return l;
   }
 
+  //Items needed for textfield
   String changed;
   String submitted;
 
+  //Items needed for checkboxes
   Map check = {
     "Carottes" : false,
     "Bananes" : false,
