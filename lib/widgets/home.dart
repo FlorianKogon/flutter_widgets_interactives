@@ -11,6 +11,30 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+  int itemSelected;
+
+  List<Widget> radios() {
+    List<Widget> l = [];
+    for(int x = 0; x < 4; x++) {
+      Row row = Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text('Choix numéro : ${x + 1} '),
+          Radio(value: x,
+              groupValue: itemSelected,
+              onChanged: (int i) {
+                setState(() {
+                  itemSelected = i;
+                });
+              }
+          ),
+        ],
+      );
+      l.add(row);
+    }
+    return l;
+  }
+
   String changed;
   String submitted;
 
@@ -57,8 +81,11 @@ class _MyHomePageState extends State<MyHomePage> {
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: checkList(),
+            children: radios(),
+            // CHECKLIST
+            //children: checkList(),
             /*
+            TEXTFIELD
             TextField(
               keyboardType: TextInputType.text,
               onChanged: (String string) {
