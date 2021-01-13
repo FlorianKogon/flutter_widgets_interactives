@@ -11,6 +11,9 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+  //Items needed for switch
+  bool interruptor;
+
   //Items needed for radiobuttons
   int itemSelected;
 
@@ -84,8 +87,23 @@ class _MyHomePageState extends State<MyHomePage> {
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: radios(),
-            // CHECKLIST
+            // SWTICH
+            /*
+            children: [
+              Text("Aimez-vous flutter ?"),
+              Switch(value: interruptor,
+                inactiveTrackColor: Colors.red,
+                activeColor: Colors.green,
+                onChanged: (bool b) {
+                  setState(() {
+                    interruptor = b;
+                  });
+              })
+            ],
+             */
+            // RADIOBUTTONS
+            //children: radios(),
+            // CHECKBOXES
             //children: checkList(),
             /*
             TEXTFIELD
